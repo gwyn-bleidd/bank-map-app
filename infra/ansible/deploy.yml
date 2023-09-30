@@ -1,6 +1,7 @@
 ---
 - name: push docker images
   hosts: test
+  remote_user: kadementev
   tasks:
     - name: start docker daemon
       ansible.builtin.command:
