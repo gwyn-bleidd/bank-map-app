@@ -19,15 +19,13 @@ jobs:
           submodules: true
       - name: Setup SSH 
         shell: bash
-        env:
-          SSH_HOST: ${{ secrets.SSH_HOST }}
         run: |
          eval `ssh-agent -s`
          mkdir -p /home/runner/.ssh/
          touch /home/runner/.ssh/id_rsa
          echo -e "${{secrets.SSH_KEY}}" > /home/runner/.ssh/id_rsa
          chmod 700 /home/runner/.ssh/id_rsa
-         ssh-keyscan -t rsa "$SSH_HOST" >> /home/runner/.ssh/known_hosts
+         ssh-keyscan -t rsa ${{ secrets.SSH_HOST }} >> /home/runner/.ssh/known_hosts
       - name: Run ansible script
         shell: bash 
         run: |
