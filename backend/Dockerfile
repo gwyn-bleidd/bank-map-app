@@ -6,7 +6,6 @@ FROM golang:1.19
 WORKDIR /app
 
 # Download Go modules
-RUN cd scripts
 COPY go.mod go.sum ./
 RUN go mod download
 
