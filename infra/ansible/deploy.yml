@@ -1,6 +1,6 @@
 ---
 - name: push docker images
-  hosts: localhost
+  hosts: test
   tasks:
     - name: start docker daemon
       ansible.builtin.command:
