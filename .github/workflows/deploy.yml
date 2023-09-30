@@ -32,4 +32,4 @@ jobs:
           service ssh status
           cd infrastructure/ansible
           cat setup-prod.yml
-          ansible-playbook -vvv --private-key /home/runner/.ssh/id_rsa -u ${{secrets.ANSIBLE_DEPLOY_USER}} -i infra/hosts.yml infra/deploy.yml
+          ansible-playbook -vvv --private-key /home/runner/.ssh/id_rsa -u ${{ secrets.ANSIBLE_DEPLOY_USER }} -i infra/hosts.yml infra/deploy.yml
