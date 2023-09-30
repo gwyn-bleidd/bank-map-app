@@ -1,0 +1,25 @@
+---
+- hosts: test-vms
+  tasks:
+    - name: start docker daemon
+    ansible.builtin.command:
+      cmd: sudo service docker start
+    
+    - name: Build an image and push it to a repo
+      community.docker.docker_image:
+        build:
+          path: ./backend
+        name: yndxgwyn/web-backend:1.00
+        tag: v1
+        push: true
+        source: build
+
+    - name: Start container
+      docker_container:
+        name: test
+        image: yndxgwyn/web-backend:latest
+        env:
+          arg1: "true"
+          arg2: "whatever"
+        exposed_ports:
+          - 8080
