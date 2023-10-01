@@ -38,9 +38,9 @@ jobs:
       
       - name: Extract metadata (tags, labels) for Docker
         id: meta
-        uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
+        uses: docker/metadata-action@v5
         with:
-          images: yndxgwyn/bank-web-app
+          images: yndxgwyn/bank-web-app:latest
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
@@ -48,7 +48,7 @@ jobs:
           context: backend
           file: backend/Dockerfile
           push: true
-          tags: "latest"
+          tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
 
       - name: deploy on server
