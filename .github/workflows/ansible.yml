@@ -48,8 +48,8 @@ jobs:
           context: backend
           file: backend/Dockerfile
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: "latest"
+          tags: "latest"
+          labels: ${{ steps.meta.outputs.labels }}
 
       - name: deploy on server
         shell: bash 
