@@ -19,7 +19,7 @@
     - name: Setup backend container
       community.docker.docker_container:
         name: backend
-        image: yndx-gwyn/bank-web-app:latest
+        image: yndxgwyn/bank-web-app:latest
         state: present
         recreate: true
         exposed_ports:
