@@ -4,14 +4,10 @@
   remote_user: ubuntu
   tasks:
 
-    - name: login in docker
-      ansible.builtin.command:
-        cmd: sudo docker login --username {{ username }}  --password {{ password }}
-
     - name: Setup backend container
       community.docker.docker_container:
         name: backend
-        image: yndx-gwyn/bank-web-app
+        image: yndx-gwyn/bank-web-app:latest
         state: present
         recreate: true
         exposed_ports:
