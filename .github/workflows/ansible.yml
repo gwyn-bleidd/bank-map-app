@@ -40,7 +40,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: yndxgwyn/bank-web-app:latest
+          images: yndxgwyn/bank-web-app
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v2
@@ -48,7 +48,7 @@ jobs:
           context: backend
           file: backend/Dockerfile
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
+          tags: yndxgwyn/bank-web-app:latest
           labels: ${{ steps.meta.outputs.labels }}
 
       - name: deploy on server
