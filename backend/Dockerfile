@@ -2,8 +2,6 @@
 
 FROM golang:1.19
 
-RUN cd backend
-
 # Set destination for COPY
 WORKDIR /app
 
