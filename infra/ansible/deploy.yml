@@ -22,5 +22,6 @@
         image: yndxgwyn/bank-web-app
         state: present
         recreate: true
+        restart: true
         exposed_ports:
           - 8080
