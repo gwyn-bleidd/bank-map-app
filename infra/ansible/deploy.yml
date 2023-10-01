@@ -4,6 +4,11 @@
   remote_user: ubuntu
   tasks:
 
+    - name: setup python
+      ansible.builtin.command:
+        cmd: python3 pip install requests
+    
+
     - name: Build an image and push it to a repo
       community.docker.docker_image:
         build:

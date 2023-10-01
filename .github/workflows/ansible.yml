@@ -28,8 +28,7 @@ jobs:
           echo -e "${{ secrets.SSH_KEY }}"  | tr -d '\r' > /home/runner/.ssh/id_rsa.pub
           chmod 700 /home/runner/.ssh/id_rsa
           chmod 700 /home/runner/.ssh/id_rsa.pub
-          ssh-add
-          python3 -m pip install requests
+          ssh-add 
       - name: Run ansible script
         shell: bash 
         run: |
