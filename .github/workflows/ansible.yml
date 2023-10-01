@@ -50,3 +50,10 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
+      - name: deploy on server
+        shell: bash 
+        run: |
+          service ssh status
+          cd infra/ansible
+          ansible-playbook -vvv --private-key /home/runner/.ssh/id_rsa -u ${{secrets.ANSIBLE_DEPLOY_USER }} -i hs.yml deploy.yml

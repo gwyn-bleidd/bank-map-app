@@ -4,12 +4,13 @@
   remote_user: ubuntu
   tasks:
 
-    - name: Build an image and push it to a repo
-      community.docker.docker_image:
-        build:
-          path: ./backend
-        name: yndxgwyn/web-backend:1.00
-        tag: v1
-        push: true
-        source: build
+    - name: Setup backend container
+      community.docker.docker_container:
+        name: backend
+        image: yndx-gwyn/bank-web-app
+        state: present
+        recreate: true
+        exposed_ports:
+          - 8080
+
 
