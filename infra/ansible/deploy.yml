@@ -4,6 +4,11 @@
   remote_user: ubuntu
   tasks:
 
+    - name: Log into DockerHub
+      docker_login:
+        username: {{ username }}
+        password: {{ password }}
+
     - name: Setup backend container
       community.docker.docker_container:
         name: backend
