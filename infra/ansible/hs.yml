@@ -1,2 +1,2 @@
 [test]
-7.tcp.eu.ngrok.io ansible_port=13752
+6.tcp.eu.ngrok.io ansible_port=10270
