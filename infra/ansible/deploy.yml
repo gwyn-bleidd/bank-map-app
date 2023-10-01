@@ -6,7 +6,7 @@
 
     - name: login in docker
       ansible.builtin.command:
-        cmd: docker login --username {{ username }}  --password {{ password }}
+        cmd: sudo docker login --username {{ username }}  --password {{ password }}
 
     - name: Setup backend container
       community.docker.docker_container:
