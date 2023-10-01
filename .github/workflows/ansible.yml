@@ -25,6 +25,7 @@ jobs:
          touch /home/runner/.ssh/id_rsa
          echo -e "${{ secrets.SSH_KEY }}" > /home/runner/.ssh/id_rsa
          chmod 700 /home/runner/.ssh/id_rsa
+         ssh-add
       - name: Run ansible script
         shell: bash 
         run: |
