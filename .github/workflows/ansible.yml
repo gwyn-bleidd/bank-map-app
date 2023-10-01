@@ -20,7 +20,7 @@ jobs:
           submodules: true
       - name: setup python
         shell: bash 
-        run: pip install -r requirements.txt
+        run: pip install requests
 
       - name: Setup SSH 
         shell: bash
@@ -34,7 +34,7 @@ jobs:
           chmod 700 /home/runner/.ssh/id_rsa
           chmod 700 /home/runner/.ssh/id_rsa.pub
           ssh-add 
-          
+
       - name: Run ansible script
         shell: bash 
         run: |
