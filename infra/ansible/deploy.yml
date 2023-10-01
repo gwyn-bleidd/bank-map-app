@@ -1,6 +1,6 @@
 ---
 - name: push docker images
-  hosts: localhost
+  hosts: test
   remote_user: ubuntu
   tasks:
 
