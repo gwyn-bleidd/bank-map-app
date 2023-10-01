@@ -23,8 +23,11 @@ jobs:
           eval `ssh-agent -s`
           mkdir -p /home/runner/.ssh/
           touch /home/runner/.ssh/id_rsa
-          echo -e "${{ secrets.SSH_KEY }}"  | tr -d '\r' > /home/runner/.ssh/id_rsa
+          touch /home/runner/.ssh/id_rsa.pub
+          echo -e "${{ secrets.SSH_PRIVATE_KEY }}"  | tr -d '\r' > /home/runner/.ssh/id_rsa
+          echo -e "${{ secrets.SSH_KEY }}"  | tr -d '\r' > /home/runner/.ssh/id_rsa.pub
           chmod 700 /home/runner/.ssh/id_rsa
+          chmod 700 /home/runner/.ssh/id_rsa.pub
           ssh-add
       - name: Run ansible script
         shell: bash 
