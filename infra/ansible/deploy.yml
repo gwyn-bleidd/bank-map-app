@@ -1,9 +1,9 @@
 ---
 - name: push docker images
-  hosts: test
+  hosts: localhost
   remote_user: ubuntu
   tasks:
-  
+
     - name: Build an image and push it to a repo
       community.docker.docker_image:
         build:
@@ -13,9 +13,3 @@
         push: true
         source: build
 
-    - name: Start container
-      docker_container:
-        name: test
-        image: yndxgwyn/web-backend:latest
-        exposed_ports:
-          - 8080
