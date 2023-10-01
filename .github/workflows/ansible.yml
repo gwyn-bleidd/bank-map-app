@@ -15,8 +15,13 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
       - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
         with:
           submodules: true
+      - name: setup python
+        shell: bash 
+        run: pip install -r requirements.txt
+
       - name: Setup SSH 
         shell: bash
         run: |
@@ -29,6 +34,7 @@ jobs:
           chmod 700 /home/runner/.ssh/id_rsa
           chmod 700 /home/runner/.ssh/id_rsa.pub
           ssh-add 
+          
       - name: Run ansible script
         shell: bash 
         run: |

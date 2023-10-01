@@ -4,12 +4,6 @@
   remote_user: ubuntu
   tasks:
 
-    - name: setup python
-      shell: |
-        curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
-        python3 get-pip.py --user
-        python3 pip install requests    
-
     - name: Build an image and push it to a repo
       community.docker.docker_image:
         build:
