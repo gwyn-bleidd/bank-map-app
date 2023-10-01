@@ -20,7 +20,8 @@
       community.docker.docker_container:
         name: backend
         image: yndxgwyn/bank-web-app
-        state: present
+        pull: true
+        state: started
         detach: true
         ports:
           - 8080:8080
