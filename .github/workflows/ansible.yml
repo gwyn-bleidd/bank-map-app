@@ -15,13 +15,8 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
       - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
         with:
           submodules: true
-      - name: setup python
-        shell: bash 
-        run: pip install requests
-
       - name: Setup SSH 
         shell: bash
         run: |
@@ -35,9 +30,28 @@ jobs:
           chmod 700 /home/runner/.ssh/id_rsa.pub
           ssh-add 
 
-      - name: Run ansible script
-        shell: bash 
+      - name: Log in to Docker Hub
+        uses: docker/login-action@f4ef78c080cd8ba55a85445d5b36e214a81df20a
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+      
+      - name: Extract metadata (tags, labels) for Docker
+        id: meta
+        uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
+        with:
+          images: yndx-gwyn/bank-web-app
+      
+      - name: cd 
+        shell: bash
         run: |
-          service ssh status
-          cd infra/ansible
-          ansible-playbook -vvv --private-key /home/runner/.ssh/id_rsa -u ${{secrets.ANSIBLE_DEPLOY_USER }} -i hs.yml deploy.yml
+          cd backend
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@3b5e8027fcad23fda98b2e3ac259d8d67585f671
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: "latest"
+          labels: "web-app"
