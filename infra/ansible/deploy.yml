@@ -3,10 +3,7 @@
   hosts: test
   remote_user: ubuntu
   tasks:
-    - name: start docker daemon
-      ansible.builtin.command:
-        cmd: sudo service docker start
-    
+  
     - name: Build an image and push it to a repo
       community.docker.docker_image:
         build:
