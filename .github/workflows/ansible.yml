@@ -56,5 +56,5 @@ jobs:
         run: |
           service ssh status
           cd infra/ansible
-          ansible-playbook -vvv --private-key /home/runner/.ssh/id_rsa -u ${{secrets.ANSIBLE_DEPLOY_USER }} -i hs.yml deploy.yml -e '{"username": ${{ secrets.DOCKER_USERNAME }}, "password": ${{ secrets.DOCKER_PASSWORD }}, "ansible_sudo_pass": ${{secrets.SUDO_PASSWORD}} }'
-  
+          ansible-playbook -vvv --private-key /home/runner/.ssh/id_rsa -u ${{secrets.ANSIBLE_DEPLOY_USER }} -i hs.yml deploy.yml \
+          -e '{"username": ${{ secrets.DOCKER_USERNAME }}, "password": ${{ secrets.DOCKER_PASSWORD }}, "ansible_sudo_pass": ${{secrets.SUDO_PASSWORD}} }'

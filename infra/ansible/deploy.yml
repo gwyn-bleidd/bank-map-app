@@ -21,6 +21,9 @@
         name: backend
         image: yndxgwyn/bank-web-app
         state: present
+        detach: true
+        ports:
+          - 8080:8080
         recreate: true
         restart: true
         exposed_ports:
