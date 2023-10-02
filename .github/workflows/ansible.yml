@@ -1,4 +1,4 @@
-name: CI
+name: CD
 
 # Controls when the workflow will run
 on:
@@ -51,7 +51,7 @@ jobs:
           tags: yndxgwyn/bank-web-app:latest
           labels: ${{ steps.meta.outputs.labels }}
 
-      - name: deploy on server
+      - name: run ansible on server
         shell: bash 
         run: |
           service ssh status

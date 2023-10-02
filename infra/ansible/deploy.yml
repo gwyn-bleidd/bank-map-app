@@ -8,7 +8,7 @@
     - name: install docker-py
       pip: name=docker-py
 
-    - name: Ensure service is enabled
+    - name: Ensure docker service is running
       command: service docker restart
 
     - name: Log into DockerHub
@@ -16,7 +16,7 @@
         username: "{{ username }}"
         password: "{{ password }}"
 
-    - name: Setup backend container
+    - name: Setup backend
       community.docker.docker_container:
         name: backend
         image: yndxgwyn/bank-web-app
